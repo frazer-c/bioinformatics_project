@@ -1,0 +1,17 @@
+The programs used in the pipeline were as follows.
+
+toolshed.g2.bx.psu.edu/repos/devteam/bowtie2/bowtie2/2.5.3+galaxy1 < Bowtie2 was used to pair and align reads to the HG19 reference genome.
+
+toolshed.g2.bx.psu.edu/repos/devteam/picard/picard_AddOrReplaceReadGroups/3.1.1.0 < AddOrReplaceReadGroups was used to provide read groups so that Mutect variant calling would work.
+
+toolshed.g2.bx.psu.edu/repos/devteam/picard/picard_SortSam/3.1.1.0 < Sortsam was used to order reads.
+
+toolshed.g2.bx.psu.edu/repos/devteam/picard/picard_MarkDuplicates/3.1.1.0 < MarkDuplicates was used to delete all identified duplicate sequences from the BAM file. This was optional, and could instead be flagged and filtered out to preserve data.
+
+toolshed.g2.bx.psu.edu/repos/iuc/gatk4_mutect2/gatk4_mutect2/4.1.7.0+galaxy1 < Mutect2 was used to call variants, combined with the bed file to identify regions of interest.
+
+toolshed.g2.bx.psu.edu/repos/iuc/snpeff/snpEff/5.2+galaxy0 < SNPEff was used to annotate variants. Additional options - filtered out all options aside from intronic and exonic variants.
+
+toolshed.g2.bx.psu.edu/repos/iuc/qualimap_bamqc/qualimap_bamqc/2.3+galaxy0 < QualiMap_BAMQC was used to investigate the quality of the BAM files.
+
+toolshed.g2.bx.psu.edu/repos/devteam/fastx_quality_statistics/cshl_fastx_quality_statistics/1.0.1+galaxy2 < FastX quality statistics was used to investigate the quality of the forward and reverse FastQ files.
